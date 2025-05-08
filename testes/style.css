@@ -1,0 +1,91 @@
+/* body{
+    padding: 0;
+    margin: 0;
+    background-image: url('https://img.freepik.com/fotos-gratis/textura-de-fundo-de-parede-de-tinta-verde_53876-16376.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+
+}
+
+#header{
+    width: 100vh;
+}
+
+#player1{
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    float: left;
+    background-image: url('https://deckofcardsapi.com/static/img/back.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 75px;
+    min-height: 105px;
+} */
+
+body {
+    background-color: #0f5132;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  nav {
+    margin-bottom: 10px;
+  }
+  
+  .game-area {
+    flex: 1;
+    display: grid;
+    grid-template-areas:
+      "player-top"
+      "middle"
+      "player-bottom";
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+  }
+  
+  .player-hand {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+  }
+  
+  #player1 {
+    grid-area: player-bottom;
+  }
+  
+  #player3 {
+    grid-area: player-top;
+  }
+  
+  #player2 {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  
+  #player4 {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+  }
+  
+  .card {
+    width: 60px;
+    height: 90px;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
