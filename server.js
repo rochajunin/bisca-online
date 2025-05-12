@@ -13,12 +13,15 @@
   let deck2 = []
   let deck3 = []
 
+  let decks = [deck0, deck1, deck2, deck3]
+
   wss.on('connection', (ws) => {
     if (players.length < 4) {
       console.log("novo jogador conectado")
       players.push(ws)
       ws.send("conectado");
-      distribute()
+      console.log(players);
+      
     } else {
       console.log("servidor cheio! aguarde. ");
       ws.send("Servidor cheio! Tente novamente mais tarde.");
@@ -59,6 +62,7 @@
     console.log("Cartas embaralhadas:", deck.map(object => object.code));
     // players.forEach((element) => console.log(element)) 
     broadcast("O jogo vai começar agora!");
+    distribute(deck)
     console.log("Servidor rodando na porta 8080");
   }
 
@@ -70,8 +74,27 @@
     });
   }
 
-  function distribute() {
-    deck0 = randCard()
+  async function distribute(deck) {
+    for (let i = 0; i < 4; i++) {
+      deck0.push(await randCard(deck));
+      deck1.push(await randCard(deck));
+      deck2.push(await randCard(deck));
+      deck3.push(await randCard(deck));
+    }
+    console.log(decks.map(jogador => jogador.map(carta => ({ code: carta.code, value: carta.value, suit: carta.suit }))));
+  }
+
+  function buscarimagem(code) {
+    const texto = `https://deckofcardsapi.com/static/img/${code}.png`
+    return texto
+  }
+
+
+  function playCard(player, card) {
+    let playerNome = ''
+    if (player == 0 || 1 || 2 || 3 ) {
+      // playerNome = 
+    }
   }
 
 
