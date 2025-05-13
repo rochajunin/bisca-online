@@ -23,7 +23,7 @@ export function broadcast(message, players) {
       if (player.readyState === player.OPEN) {
         // Garante que seja uma string JSON válida
         const mensagemFinal = typeof message === "string" ? { tipo: "sistema", mensagem: message } : message;
-        player.send(JSON.stringify(mensagemFinal.mensagem));
+        player.send(mensagemFinal.mensagem);
       }
     });
   }
