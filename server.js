@@ -1,6 +1,20 @@
   import { WebSocketServer, WebSocket } from 'ws';
   import { shuflle } from "./shuflle.js"
   import {broadcast, distribute, findImage} from "./functions.js"
+  import { express } from 'express'
+
+  app.get('/', (req, res) => {
+    res.send('HTTPS request received!');
+  });
+  
+  const server = https.createServer(options, app);
+  
+  server.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
+
+
+
 
   const wss = new WebSocketServer({ port: 8080 });
 
@@ -64,6 +78,8 @@
   console.log(players);
 
   async function start() {
+    players = players.sort(() => {return Math.random() - 0.5})
+    console.log(players);
     const deck = await shuflle();
     console.log("Cartas embaralhadas:", deck.map(object => object.code));
     // players.forEach((element) => console.log(element)) 
