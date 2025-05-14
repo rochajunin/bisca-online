@@ -1,16 +1,17 @@
   import { WebSocketServer, WebSocket } from 'ws';
   import { shuflle } from "./shuflle.js"
   import {broadcast, distribute, findImage} from "./functions.js"
-  import { express } from 'express'
+  import express from 'express';
+
+  const app = express();
+  const port = 3000;
 
   app.get('/', (req, res) => {
-    res.send('HTTPS request received!');
+    res.send('Hello World!');
   });
-  
-  const server = https.createServer(options, app);
-  
-  server.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+
+  app.listen(port, () => {
+    console.log(`O servidor está a correr em http://localhost:${port}`);
   });
 
 
